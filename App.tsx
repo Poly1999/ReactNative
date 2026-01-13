@@ -1,45 +1,55 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faHome, faCalendarDays } from '@fortawesome/free-solid-svg-icons';
+import { Provider } from 'react-redux';
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+import HomePage from './src/pages/HomePage';
+import Calendar from './src/pages/Calendar';
+import { store } from './src/redux/store';
 
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
+const Tab = createBottomTabNavigator();
 
+const App = () => {
   return (
-    <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
-    </SafeAreaProvider>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Tab.Navigator
+          initialRouteName="Home"
+          screenOptions={{
+            tabBarActiveTintColor: '#9ecbff',
+            headerShown: false,
+            tabBarStyle: {
+              backgroundColor: '#ffee9a',
+            },
+          }}
+        >
+          <Tab.Screen
+            name="Home"
+            options={{
+              tabBarLabel: 'Home',
+              tabBarIcon: ({ color }) => (
+                <FontAwesomeIcon icon={faHome} color={color} />
+              ),
+            }}
+            component={HomePage}
+          />
+
+          <Tab.Screen
+            name="Calendar"
+            options={{
+              tabBarLabel: 'Calendar',
+              tabBarIcon: ({ color }) => (
+                <FontAwesomeIcon icon={faCalendarDays} color={color} />
+              ),
+            }}
+            component={Calendar}
+          />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
-}
-
-function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
-
-  return (
-    <View style={styles.container}>
-      <NewAppScreen
-        templateFileName="App.tsx"
-        safeAreaInsets={safeAreaInsets}
-      />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
+};
 
 export default App;
