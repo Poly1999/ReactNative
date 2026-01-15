@@ -22,48 +22,47 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginTop: 5,
-    marginLeft: 10,
-    padding: 5,
+    marginHorizontal: 5,
+    padding: 10,
+    marginBottom: 10,
     borderWidth: 1,
-    width: 200,
+    borderColor: '#ddd',
+    borderRadius: 8,
+    backgroundColor: '#fff',
+    width: '47%',
     minHeight: 120,
-    flex: 1,
-  },
-
-  statsImage: {
-    height: 40,
-    width: 35,
-    // marginRight: 30,
-    // marginLeft: 10,
   },
 
   statsAll: {
-    fontSize: 15,
+    fontSize: 16,
     color: 'black',
     fontWeight: '900',
   },
 
   statsInfo: {
-    flex: 1,
+    marginTop: 8,
+    alignItems: 'center',
   },
 
   statsDay: {
     fontSize: 13,
-    color: 'black',
-    marginLeft: 10,
+    color: '#666',
+    marginLeft: 5,
     fontWeight: '500',
   },
 
   statsText: {
     fontSize: 12,
-    color: 'black',
+    color: '#333',
+    textAlign: 'center',
+    marginTop: 4,
   },
 
   statsNumbers: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
+    marginBottom: 4,
   },
 });
 

@@ -2,10 +2,12 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const dateSlice = createSlice({
   name: 'date',
-  initialState: {},
+  initialState: {
+    selectedDate: '',
+  },
   reducers: {
     changeDate(state, action) {
-      state = action.payload;
+      state.selectedDate = action.payload;
     },
   },
 });
